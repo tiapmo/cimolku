@@ -1,4 +1,4 @@
-/* Reset and base */
+/* Reset dan dasar */
 *,
 *::before,
 *::after {
@@ -6,11 +6,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
   background: linear-gradient(to bottom right, #ff0000, #ffa500);
-  color: #4b5563; /* Neutral gray - conforms with #6b7280 guideline but slightly darker for readability */
+  color: #4b5563;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -18,8 +19,10 @@ body {
   align-items: flex-start;
   padding: 2rem 1rem;
 }
+
+/* Container utama */
 .container {
-  max-width: 720px;
+  max-width: 960px;
   width: 100%;
   background: #ffffff;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -30,36 +33,40 @@ body {
   padding: 2.5rem 2rem;
   flex-wrap: nowrap;
 }
+
+/* Gambar */
 .img {
   flex: 1 1 35%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .img img {
-  max-width: 70%;
+  max-width: 100%;
   height: auto;
-  display: block;
   border-radius: 0.5rem;
   user-select: none;
   pointer-events: none;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
+
+/* Pertanyaan dan jawaban */
 .questions {
-  flex: 1 1 55%;
+  flex: 1 1 65%;
   display: flex;
   flex-direction: column;
 }
+
 .questions h1 {
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   color: #111827;
   margin-bottom: 1.5rem;
-  line-height: 1.1;
+  line-height: 1.2;
 }
-.question-group {
-  margin-bottom: 1rem;
-}
+
+/* Pertanyaan (judul) */
 h3.question {
   font-weight: 600;
   font-size: 1.1rem;
@@ -68,74 +75,99 @@ h3.question {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 0.6rem 0;
   transition: color 0.3s ease;
   user-select: none;
 }
+
 h3.question:hover {
-  color: #ef4444; /* crimson */
+  color: #ef4444;
 }
+
 h3.question img {
   width: 1.25rem;
   height: 1.25rem;
   transition: transform 0.3s ease;
 }
+
+/* Jawaban */
 p.answer {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #6b7280;
-  padding-left: 0.25rem;
   margin-top: 0.25rem;
+  padding-left: 0.25rem;
   display: none;
 }
+
+a {
+  color: #ef4444;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Pembatas */
 hr {
   border: none;
   border-top: 1px solid #e5e7eb;
   margin: 0.5rem 0 1.2rem 0;
 }
-/* Accordion open state style with rotated arrow */
+
+/* State terbuka */
+.question.open {
+  color: #ef4444;
+}
+
 .question.open img {
   transform: rotate(180deg);
 }
+
 .question.open + p.answer {
   display: block;
 }
-/* Responsive */
-@media (max-width: 760px) {
+
+/* Responsive design */
+@media (max-width: 768px) {
   body {
     padding: 1.5rem 1rem;
     align-items: center;
   }
+
   .container {
     flex-direction: column;
     padding: 1.5rem 1rem;
-    max-width: 100%;
     width: 100%;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 0.75rem;
   }
+
   .img {
-    flex: none;
     width: 100%;
     margin-bottom: 1.5rem;
   }
+
   .questions {
-    flex: none;
     width: 100%;
     padding: 0;
   }
+
   .questions h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
   }
+
   h3.question {
     font-size: 1rem;
     padding: 0.8rem 0;
   }
+
   p.answer {
     font-size: 0.95rem;
     padding-left: 0.5rem;
   }
+
   hr {
     margin: 0.25rem 0 1rem 0;
   }
