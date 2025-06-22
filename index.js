@@ -1,22 +1,25 @@
-const questions = document.querySelectorAll('.question');
+const answers = document.querySelectorAll('.answer');
+const arrowIcons = document.querySelectorAll('.question img');
+const container = document.querySelector('.container');
 
-questions.forEach(question => {
-  const answer = question.nextElementSibling;
-  const arrow = question.querySelector('img');
+answers.forEach(answer => (answer.style.display = 'none'));
 
-  answer.style.display = 'none';
-
-  question.addEventListener('click', () => {
-    const isOpen = answer.style.display === 'block';
-
-    document.querySelectorAll('.answer').forEach(ans => ans.style.display = 'none');
-    document.querySelectorAll('.question img').forEach(img => img.style.transform = 'rotate(0deg)');
-    document.querySelectorAll('.question').forEach(q => q.style.color = 'rgb(90, 90, 90)');
-
-    if (!isOpen) {
-      answer.style.display = 'block';
-      arrow.style.transform = 'rotate(180deg)';
-      question.style.color = 'crimson';
-    }
-  });
+container.addEventListener('click', e => {
+	arrowIcons.forEach(arrow => {
+		if (e.target === arrow) {
+			answers.forEach(answer => {
+				if (answer.parentElement === e.target.parentElement.parentElement) {
+					if (answer.style.display === 'none') {
+						arrow.style.transform = 'rotate(180deg)';
+						answer.style.display = 'block';
+						e.target.parentElement.style.color = 'crimson';
+					} else if (answer.style.display === 'block') {
+						arrow.style.transform = 'rotate(0)';
+						answer.style.display = 'none';
+						e.target.parentElement.style.color = 'rgb(90, 90, 90)';
+					}
+				}
+			});
+		}
+	});
 });
